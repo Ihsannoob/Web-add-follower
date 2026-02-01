@@ -1,24 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>PANEL SMM JS</title>
-  <style>
-    body {background:#0f172a;color:white;font-family:Arial;padding:20px}
-    .card {background:#020617;padding:15px;border-radius:10px;margin-bottom:15px}
-    input, select, button {padding:8px;border-radius:5px;border:none;margin:5px 0}
-    button {background:#22c55e;color:black;font-weight:bold;cursor:pointer}
-    table {width:100%;border-collapse:collapse;margin-top:15px}
-    th, td {padding:8px;border-bottom:1px solid #334155;text-align:center}
-    .pending {color:orange;font-weight:bold}
-    .processing {color:cyan;font-weight:bold}
-    .completed {color:lime;font-weight:bold}
-  </style>
+<meta charset="UTF-8">
+<title>PANEL SMM PRO JS</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<h1> PANEL SMM JS </h1>
+
+<h1>🔥 PANEL SMM PRO JS 🔥</h1>
 
 <div class="card">
-<h3> Buat Order</h3>
+<h3>➕ Buat Order</h3>
 <input type="text" id="username" placeholder="Username"><br>
 <select id="layanan">
   <option value="followers">Followers</option>
@@ -30,40 +22,12 @@
 </div>
 
 <div class="card">
-<h3> List Order</h3>
+<h3>📦 List Order</h3>
 <table id="orderTable">
-<tr><th>No</th><th>User</th><th>Layanan</th><th>Progress</th><th>Status</th></tr>
+<tr><th>No</th><th>Username</th><th>Layanan</th><th>Progress</th><th>Status</th></tr>
 </table>
 </div>
 
-<script>
-async function fetchOrders() {
-  const res = await fetch("/api/orders");
-  const orders = await res.json();
-  const table = document.getElementById("orderTable");
-  table.innerHTML = '<tr><th>No</th><th>User</th><th>Layanan</th><th>Progress</th><th>Status</th></tr>';
-  orders.forEach((o,i)=>{
-    let row = table.insertRow();
-    row.innerHTML = `<td>${i+1}</td><td>${o.username}</td><td>${o.layanan}</td><td>${o.progress}/${o.jumlah}</td><td class="${o.status}">${o.status}</td>`;
-  });
-}
-
-async function addOrder() {
-  const username = document.getElementById("username").value;
-  const layanan = document.getElementById("layanan").value;
-  const jumlah = parseInt(document.getElementById("jumlah").value);
-  await fetch("/api/order", {
-    method:"POST",
-    headers:{"Content-Type":"application/json"},
-    body: JSON.stringify({username, layanan, jumlah})
-  });
-  document.getElementById("username").value="";
-  document.getElementById("jumlah").value="";
-  fetchOrders();
-}
-
-fetchOrders();
-setInterval(fetchOrders, 2000); // auto refresh tiap 2 detik
-</script>
+<script src="app.js"></script>
 </body>
 </html>
