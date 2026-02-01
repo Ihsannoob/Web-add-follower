@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>PANEL SMM PRO JS</title>
+<link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+<h1> PANEL SMM PRO JS </h1>
+
+<div class="card">
+<h3> Buat Order</h3>
+<input type="text" id="username" placeholder="Username"><br>
+<select id="layanan">
+  <option value="followers">Followers</option>
+  <option value="likes">Likes</option>
+  <option value="views">Views</option>
+</select><br>
+<input type="number" id="jumlah" placeholder="Jumlah"><br>
+<button onclick="addOrder()">Order</button>
+</div>
+
+<div class="card">
+<h3> List Order</h3>
+<table id="orderTable">
+<tr><th>No</th><th>Username</th><th>Layanan</th><th>Progress</th><th>Status>
+</table>
+</div>
+
+<script src="main.js"></script>
+</body>
+</html>
